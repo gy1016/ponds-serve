@@ -1,7 +1,7 @@
 const MYSQL_CONF = {
-  host: 'localhost',
-  user: 'root',
-  password: 'Fscsczz0523.',
+  host: '127.0.0.1',
+  user: 'ponds',
+  password: 'YL7Ph4ZBBZGrFXtf',
   database: 'ponds'
 }
 
