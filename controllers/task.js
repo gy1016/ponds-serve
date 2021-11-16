@@ -21,6 +21,7 @@ async function addResult({belong, userId, describe}) {
 }
 
 async function infoResult(id) {
+  if (id == 0) return new Result('这个是隐藏数据哦').success()
   const res = await getTaskInfo(id)
   if (res == null) {
     return new Result('获取信息失败').success()
