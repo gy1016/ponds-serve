@@ -3,7 +3,8 @@ router.prefix('/api/task')
 
 const { 
   listResult,
-  addResult 
+  addResult,
+  infoResult
 } = require('../../controllers/task')
 
 // 根据用户id获取任务列表
@@ -16,6 +17,12 @@ router.get('/list', async (ctx, next) => {
 router.post('/add', async (ctx, next) => {
   const {belong, userId, describe} = ctx.request.body
   ctx.body = await addResult({belong, userId, describe})
+})
+
+// 根据任务编号获取任务信息
+router.get('/info', async (ctx, next) => {
+  const { id } = ctx.query
+  ctx.body = await infoResult(id)
 })
 
 module.exports = router

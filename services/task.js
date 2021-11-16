@@ -19,7 +19,18 @@ async function addTask({belong, userId, describe}) {
   return res.dataValues
 }
 
+async function getTaskInfo(id) {
+  const res = await Task.findOne({
+    attributes: ['id', 'describe', 'belong', 'importance', 'urgency', 'startAt', 'endAt'],
+    where: {
+      id
+    }
+  })
+  return res.dataValues
+}
+
 module.exports = {
   getTaskList,
-  addTask
+  addTask,
+  getTaskInfo
 }

@@ -1,6 +1,6 @@
 const Result = require('../models/Result')
 
-const { getTaskList, addTask } = require('../services/task')
+const { getTaskList, addTask, getTaskInfo } = require('../services/task')
 
 async function listResult(userId) {
 
@@ -20,7 +20,17 @@ async function addResult({belong, userId, describe}) {
   return new Result('添加成功').success()
 }
 
+async function infoResult(id) {
+  const res = await getTaskInfo(id)
+  if (res == null) {
+    return new Result('获取信息失败').success()
+  }
+  return new Result(res, '获取信息成功').success()
+}
+
+
 module.exports = {
   listResult,
-  addResult
+  addResult,
+  infoResult
 }
