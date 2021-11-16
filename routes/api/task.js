@@ -27,7 +27,7 @@ router.get('/info', async (ctx, next) => {
 })
 
 // 更新任务信息
-router.get('/edit', async (ctx, next) => {
+router.post('/edit', async (ctx, next) => {
   const data = ctx.request.body
   ctx.body = await editResult(data)
 })
