@@ -4,7 +4,7 @@ async function getPondList() {
   const result = await Pond.findAll({
     attributes: ['id', 'name_cn', 'name_en', 'sort'],
     order: [
-      ['sort', 'DESC']
+      ['sort', 'ASC']
     ]
   })
   return result
