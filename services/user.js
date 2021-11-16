@@ -14,7 +14,7 @@ async function isExist(username) {
 
 async function login({username, password}) {
   const result = await User.findOne({
-    attributes: ['id', 'username', 'role', 'avatar'],
+    attributes: ['id', 'username', 'role', 'avatar', 'registerAt'],
     where: {
       username,
       password
@@ -28,7 +28,7 @@ async function login({username, password}) {
 
 async function getUserInfo(username) {
   const result = await User.findOne({
-    attributes: ['id', 'username', 'role', 'avatar'],
+    attributes: ['id', 'username', 'role', 'avatar', 'registerAt'],
     where: {
       username
     }
