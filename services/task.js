@@ -20,6 +20,7 @@ async function addTask({belong, userId, describe}) {
 }
 
 async function getTaskInfo(id) {
+  if (!id) return null
   const res = await Task.findOne({
     attributes: ['id', 'describe', 'belong', 'importance', 'urgency', 'startAt', 'endAt'],
     where: {
