@@ -29,8 +29,27 @@ async function getTaskInfo(id) {
   return res.dataValues
 }
 
+async function editTask(data) {
+  const {descrube, importance, urgency, startAt, endAt, belong, id} = data
+  const res = await Task.update({
+      descrube,
+      importance,
+      urgency,
+      startAt,
+      endAt,
+      belong
+    },{
+      where: {
+        id
+      }
+    }
+  )
+  return res
+}
+
 module.exports = {
   getTaskList,
   addTask,
-  getTaskInfo
+  getTaskInfo,
+  editTask
 }
