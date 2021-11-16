@@ -1,6 +1,6 @@
 const Result = require('../models/Result')
 
-const { getTaskList } = require('../services/task')
+const { getTaskList, addTask } = require('../services/task')
 
 async function listResult(userId) {
 
@@ -12,6 +12,15 @@ async function listResult(userId) {
   }
 }
 
+async function addResult({belong, userId, describe}) {
+  const res = await addTask({belong, userId, describe})
+  if (res == null) {
+    return new Result('添加失败').success()
+  }
+  return new Result('添加成功').success()
+}
+
 module.exports = {
-  listResult
+  listResult,
+  addResult
 }

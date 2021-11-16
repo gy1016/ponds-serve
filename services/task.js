@@ -10,6 +10,16 @@ async function getTaskList(userId) {
   return result
 }
 
+async function addTask({belong, userId, describe}) {
+  const res = await Task.create({
+    belong,
+    userId,
+    describe
+  })
+  return res.dataValues
+}
+
 module.exports = {
-  getTaskList
+  getTaskList,
+  addTask
 }
