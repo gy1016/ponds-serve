@@ -1,6 +1,7 @@
 const User = require('./table/User')
 const Task = require('./table/Task')
 const Pond = require('./table/Pond')
+const History = require('./table/History')
 
 Task.belongsTo(User, {
   foreignKey: 'userId'
@@ -13,5 +14,6 @@ User.hasMany(Task, {
 module.exports = {
   User,
   Task,
-  Pond
+  Pond,
+  History
 }
