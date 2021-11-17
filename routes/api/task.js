@@ -5,7 +5,8 @@ const {
   listResult,
   addResult,
   infoResult,
-  editResult
+  editResult,
+  reorderResult
 } = require('../../controllers/task')
 
 // 根据用户id获取任务列表
@@ -30,6 +31,13 @@ router.get('/info', async (ctx, next) => {
 router.post('/edit', async (ctx, next) => {
   const data = ctx.request.body
   ctx.body = await editResult(data)
+})
+
+// 根据payload重新排序
+// 根据fromId, referenceId, type对池子进行重新排序
+router.post('/reorder', async (ctx, next) => {
+  const {fromId, fromPondId, referenceId, toPondId, type, tag} = ctx.request.body
+  ctx.body = await reorderResult({fromId, fromPondId, referenceId, toPondId, type, tag})
 })
 
 module.exports = router

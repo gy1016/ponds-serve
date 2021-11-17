@@ -1,6 +1,6 @@
 const Result = require('../models/Result')
 
-const { getTaskList, addTask, getTaskInfo, editTask } = require('../services/task')
+const { getTaskList, addTask, getTaskInfo, editTask, reorderTasks } = require('../services/task')
 
 async function listResult(userId) {
 
@@ -37,9 +37,19 @@ async function editResult(data) {
   return new Result('获取信息失败').success()
 }
 
+async function reorderResult({fromId, fromPondId, referenceId, toPondId, type, tag}) {
+  const result = await reorderTasks({fromId, fromPondId, referenceId, toPondId, type, tag})
+  if(!result) {
+    return new Result('更新失败').success()
+  } else {
+    return new Result(result, '更新成功').success()
+  }
+}
+
 module.exports = {
   listResult,
   addResult,
   infoResult,
-  editResult
+  editResult,
+  reorderResult
 }
