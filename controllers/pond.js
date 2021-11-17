@@ -1,6 +1,6 @@
 const Result = require('../models/Result')
 
-const { getPondList } = require('../services/pond')
+const { getPondList, reorderPonds } = require('../services/pond')
 
 async function listResult() {
 
@@ -12,6 +12,16 @@ async function listResult() {
   }
 }
 
+async function reorderResult({fromId, referenceId, tag, type}) {
+  const result = await reorderPonds({fromId, referenceId, tag, type})
+  if(!result) {
+    return new Result('更新失败').success()
+  } else {
+    return new Result(result, '更新成功').success()
+  }
+}
+
 module.exports = {
-  listResult
+  listResult,
+  reorderResult
 }

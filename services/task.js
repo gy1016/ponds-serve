@@ -32,7 +32,6 @@ async function getTaskInfo(id) {
 
 async function editTask(data) {
   const {describe, importance, urgency, startAt, endAt, belong, id} = data
-  console.log(describe, importance, urgency, startAt, endAt, belong, id)
   const res = await Task.update({
     describe,
     importance,
