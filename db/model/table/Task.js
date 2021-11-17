@@ -11,9 +11,9 @@ const Task = seq.define('task', {
     allowNull: false,
   },
   belong: {
-    type: STRING,
+    type: INTEGER,
     allowNull: false,
-    defaultValue: 'plan-pond'
+    defaultValue: 1
   },
   importance: {
     type: INTEGER,
@@ -27,13 +27,17 @@ const Task = seq.define('task', {
   },
   startAt: {
     type: DATE,
-    allowNull: false,
-    defaultValue: new Date()
+    allowNull: true,
+    defaultValue: seq.NOW
   },
   endAt: {
     type: DATE,
-    allowNull: false,
-    defaultValue: new Date()
+    allowNull: true,
+    defaultValue: seq.NOW
+  },
+  sort: {
+    type: INTEGER,
+    allowNull: false
   }
 }, {
   timestamps: false

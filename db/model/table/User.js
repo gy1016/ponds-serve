@@ -21,7 +21,8 @@ const User = seq.define('user', {
   },
   registerAt: {
     type: DATE,
-    allowNull: false
+    allowNull: false,
+    defaultValue: seq.NOW
   }
 }, {
   timestamps: false

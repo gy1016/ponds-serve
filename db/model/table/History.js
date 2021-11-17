@@ -12,7 +12,8 @@ const History = seq.define('history', {
   },
   dropTime: {
     type: DATE,
-    allowNull: false
+    allowNull: false,
+    defaultValue: seq.NOW
   },
   fromId: {
     type: INTEGER,
