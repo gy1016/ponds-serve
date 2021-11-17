@@ -1,6 +1,6 @@
 const Result = require('../models/Result')
 
-const { getHistoryList } = require('../services/history')
+const { getHistoryList, addHistory } = require('../services/history')
 
 async function listResult(userId) {
 
@@ -12,6 +12,16 @@ async function listResult(userId) {
   }
 }
 
+async function addResult(data) {
+  const res = await addHistory(data)
+  if (res == null) {
+    return new Result('添加失败').success()
+  }
+  return new Result('添加成功').success()
+}
+
+
 module.exports = {
-  listResult
+  listResult,
+  addResult
 }

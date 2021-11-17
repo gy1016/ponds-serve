@@ -7,6 +7,18 @@ async function getHistoryList() {
   return result
 }
 
+async function addHistory(data) {
+  const {userId, taskId, fromId, toId} = data
+  const res = await History.create({
+    userId,
+    taskId,
+    fromId,
+    toId
+  })
+  return res.dataValues
+}
+
 module.exports = {
-  getHistoryList
+  getHistoryList,
+  addHistory
 }
