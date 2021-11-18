@@ -10,6 +10,11 @@ const Pond = seq.define('pond', {
     type: STRING,
     allowNull: false,
   },
+  info: {
+    type: STRING,
+    allowNull: true,
+    defaultValue: '该池子没有添加描述哦'
+  },
   sort: {
     type: INTEGER,
     allowNull: false

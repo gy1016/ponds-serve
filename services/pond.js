@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 
 async function getPondList() {
   const result = await Pond.findAll({
-    attributes: ['id', 'name_cn', 'name_en', 'sort'],
+    attributes: ['id', 'name_cn', 'name_en', 'info', 'sort'],
     order: [
       ['sort', 'ASC']
     ]
