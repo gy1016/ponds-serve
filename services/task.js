@@ -16,8 +16,13 @@ async function getTaskList(userId) {
 }
 
 async function addTask({belong, userId, describe}) {
-  const total = await Task.count()
-
+  console.log(userId)
+  const total = await Task.count({
+    where: {
+      userId
+    }
+  })
+  console.log(total)
   const res = await Task.create({
     belong,
     userId,

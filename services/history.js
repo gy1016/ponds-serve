@@ -1,8 +1,11 @@
 const { History } = require('../db/model/index')
 
-async function getHistoryList() {
+async function getHistoryList(userId) {
   const result = await History.findAll({
-    attributes: ['id', 'userId', 'taskId', 'dropTime', 'fromId', 'toId']
+    attributes: ['id', 'userId', 'taskId', 'dropTime', 'fromId', 'toId'],
+    where: {
+      userId
+    }
   })
   return result
 }
