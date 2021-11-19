@@ -15,7 +15,7 @@ async function listResult(userId) {
 async function addResult({belong, userId, describe}) {
   const res = await addTask({belong, userId, describe})
   if (res == null) {
-    return new Result('添加失败').success()
+    return new Result('添加失败').fail()
   }
   return new Result('添加成功').success()
 }
@@ -24,7 +24,7 @@ async function infoResult(id) {
   if (id == 0) return new Result('这个是隐藏数据哦').success()
   const res = await getTaskInfo(id)
   if (res == null) {
-    return new Result('获取信息失败').success()
+    return new Result('获取信息失败').fail()
   }
   return new Result(res, '获取信息成功').success()
 }
@@ -34,7 +34,7 @@ async function editResult(data) {
   if(res) {
     return new Result('更新信息成功').success()
   }
-  return new Result('获取信息失败').success()
+  return new Result('获取信息失败').fail()
 }
 
 async function reorderResult({fromId, fromPondId, referenceId, toPondId, type, tag}) {

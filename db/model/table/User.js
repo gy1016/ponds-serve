@@ -12,7 +12,8 @@ const User = seq.define('user', {
   },
   role: {
     type: STRING,
-    allowNull: false,
+    allowNull: true,
+    defaultValue: "visitor"
   },
   avatar: {
     type: STRING,
@@ -21,8 +22,7 @@ const User = seq.define('user', {
   },
   registerAt: {
     type: DATE,
-    allowNull: false,
-    defaultValue: seq.NOW
+    allowNull: true
   }
 }, {
   timestamps: false

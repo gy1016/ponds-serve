@@ -15,7 +15,7 @@ async function listResult() {
 async function reorderResult({fromId, referenceId, tag, type}) {
   const result = await reorderPonds({fromId, referenceId, tag, type})
   if(!result) {
-    return new Result('更新失败').success()
+    return new Result('更新失败').fail()
   } else {
     return new Result(result, '更新成功').success()
   }

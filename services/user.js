@@ -39,8 +39,21 @@ async function getUserInfo(username) {
   return result.dataValues
 }
 
+async function register({username, password}) {
+  const result = await User.create({
+    username,
+    password
+  })
+  if(result == null) {
+    return result
+  }
+  return result.dataValues
+}
+
+
 module.exports = {
   isExist,
   login,
-  getUserInfo
+  getUserInfo,
+  register
 }
