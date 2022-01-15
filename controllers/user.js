@@ -38,27 +38,28 @@ async function me(token) {
 }
 
 async function registerResult(param) {
-  let { username, password } = param
-  const exist = await isExist(username)
-  if (!exist) {
-    // 用户名不存在，存储加密密码
-    password = md5(`${password}${PWD_SALT}`)
-    const result = await register({username, password})
-    if(result == null) {
-      return new Result('创建失败！').fail()
-    } else {
-      const { id, username, role, avatar, registerAt } = result
-      const token = jwt.sign(
-        { username },
-        PRIVATE_KEY,
-        {expiresIn: JWT_EXPIRED}
-        )
-      return new Result({ id, username, role, avatar, token, registerAt }, '注册成功').success()
-    }
-  } else {
-    // 用户名不存在
-    return new Result('用户名以存在，请更换用户名').fail()
-  }
+  // let { username, password } = param
+  // const exist = await isExist(username)
+  // if (!exist) {
+  //   // 用户名不存在，存储加密密码
+  //   password = md5(`${password}${PWD_SALT}`)
+  //   const result = await register({username, password})
+  //   if(result == null) {
+  //     return new Result('创建失败！').fail()
+  //   } else {
+  //     const { id, username, role, avatar, registerAt } = result
+  //     const token = jwt.sign(
+  //       { username },
+  //       PRIVATE_KEY,
+  //       {expiresIn: JWT_EXPIRED}
+  //       )
+  //     return new Result({ id, username, role, avatar, token, registerAt }, '注册成功').success()
+  //   }
+  // } else {
+  //   // 用户名不存在
+  //   return new Result('用户名以存在，请更换用户名').fail()
+  // }
+  return new Result('暂时关闭注册功能啦~').fail()
 }
 
 module.exports = {

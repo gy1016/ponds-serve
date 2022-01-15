@@ -5,6 +5,7 @@ const {
   listResult,
   addResult,
   infoResult,
+  delResult,
   editResult,
   reorderResult
 } = require('../../controllers/task')
@@ -25,6 +26,12 @@ router.post('/add', async (ctx, next) => {
 router.get('/info', async (ctx, next) => {
   const { id } = ctx.query
   ctx.body = await infoResult(id)
+})
+
+// 删除任务信息
+router.get('/delete', async (ctx, next) => {
+  const { id, sort } = ctx.query
+  ctx.body = await delResult(id, sort)
 })
 
 // 更新任务信息
